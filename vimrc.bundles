@@ -1,0 +1,53 @@
+filetype off
+  set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+" Define bundles via Github repos
+Bundle 'christoomey/vim-run-interactive'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'croaky/vim-colors-github'
+Bundle 'danro/rename.vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'kien/ctrlp.vim'
+Bundle 'pbrisbin/vim-mkdir'
+Bundle 'scrooloose/syntastic'
+Bundle 'slim-template/vim-slim'
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-surround'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'vim-scripts/ctags.vim'
+Bundle 'vim-scripts/matchit.zip'
+Bundle 'vim-scripts/tcomment'
+Bundle 'mattn/emmet-vim'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'godlygeek/tabular'
+Bundle 'msanders/snipmate.vim'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'othree/html5.vim'
+Bundle 'xsbeats/vim-blade'
+Bundle 'Raimondi/delimitMate'
+Bundle 'groenewege/vim-less'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'tomasr/molokai'
+Bundle 'klen/python-mode'
+
+"自动匹配括号、引号等，输入左括号，右括号自动出现
+Bundle 'jiangmiao/auto-pairs'
+"显示目录树
+Bundle 'scrooloose/nerdtree'
+"显示函数列表：Tlist, 上面的tagbar更好
+"Bundle 'vim-scripts/taglist
+
+"ROS插件
+"Bundle 'taketwo/vim-ros'
+
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
+
