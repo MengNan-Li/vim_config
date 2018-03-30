@@ -84,16 +84,28 @@ endfunction
 
 
 "-------------------------------------------------------------------------
-let g:ctrlp_map = '<leader>p'
-let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_map='<leader>p'
+let g:ctrlp_cmd='CtrlP'
 map <leader>f :CtrlPMRU<CR>
-let g:ctrlp_custom_ignore = {'dir':  '\v[\/]\.(git|hg|svn|rvm)$','file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',}
+"<Leader>b显示缓冲区文件，并可通过序号进行跳转
+nmap <Leader>b :CtrlPBuffer<CR>
+let g:ctrlp_custom_ignore={'dir':  '\v[\/]\.(git|hg|svn|rvm)$','file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',}
 let g:ctrlp_working_path_mode=0
 let g:ctrlp_match_window_bottom=1
 let g:ctrlp_max_height=15
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+  " Use ag in CtrlP for listing files.
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  " Ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+
 
 "-------------------------------------------------------------------------
 " YCM                                                            
@@ -116,12 +128,27 @@ let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
 
 "光标
 set guicursor=n-v-c:block-Cursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
+" Highlight current line
+"au WinLeave * set nocursorline nocursorcolumn
+"au WinEnter * set cursorline cursorcolumn
+"set cursorline cursorcolumn
+
+"EasyGrep插件设置
+let g:EasyGrepMode = 1     " All:0, Open Buffers:1, TrackExt:2, 
+let g:EasyGrepCommand = 0  " Use vimgrep:0, grepprg:1
+let g:EasyGrepRecursive  = 1 " Recursive searching
+let g:EasyGrepIgnoreCase = 1 " not ignorecase:0
+let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
 
 
-"nnoremap <C-[> <C-o>
 "行光标移动  
 "不起作用
-nmap lh <S-k4> 
+nmap lh ^ 
 "不起作用
-nmap le <S-k6> 
+nmap le $ 
+"Ctrl+N 打开NERDTree"
+map <C-n> :NERDTree<CR>
 nmap fl :NERDTree<CR>
+nmap <silent> <C-f> <leader>vv<CR>
+nmap <silent> <C-r> <leader>vr
+
