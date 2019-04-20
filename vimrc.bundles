@@ -35,7 +35,12 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'groenewege/vim-less'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tomasr/molokai'
-Bundle 'klen/python-mode'
+Bundle 'python-mode/python-mode'
+Bundle 'othree/xml.vim'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'suan/vim-instant-markdown'
+Bundle 'kannokanno/previm'
+Bundle 'tyru/open-browser.vim'
 
 "自动匹配括号、引号等，输入左括号，右括号自动出现
 Bundle 'jiangmiao/auto-pairs'
@@ -56,4 +61,12 @@ Bundle 'EasyGrep'
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
+"Python
+Bundle 'vim-scripts/indentpython.vim'
+Bundle 'nvie/vim-flake8'
+"状态栏：设置:help PowerLine
+Bundle 'https://github.com/powerline/powerline'
+"Python 自动补全
+Bundle 'https://github.com/rkulla/pydiction.git'
 
+filetype on

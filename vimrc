@@ -2,13 +2,17 @@ if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
+"文件类型检测，可以针对不同类型的文件加载不同的插件"
+filetype on
+"根据侦测的文件类型，加载相应的插件"
+filetype plugin on
+
+color ron
 "support chinese"
 set helplang=cn
 set encoding=utf-8
 "支持鼠标定位滚动等"
 set mouse=a
-"Ctrl+N 打开NERDTree"
-map <C-n> :NERDTree<CR>
 "tab=4个空格"
 set smartindent  
 set tabstop=4  
@@ -22,9 +26,12 @@ set cindent
 "显示行号
 set number
 "设置头文件路径
-set path +=.,/home/lmn/ros_ws/water_ws/devel/include/,/opt/ros/kinetic/include
+set path +=.,/home/lmn/ros_ws/water_ws/devel/include/,/opt/ros/kinetic/include,/home/lmn/opencv-3.4.1/install/include
 "搜索结果高亮
-set hlsearch 
+"set hlsearch 
+set nohls
+set clipboard+=unnamed "使用系统剪切板
+set fenc=utf-8      "文件编码"
 
 "-------------------------------------------------------------------------
 "syntastic
@@ -150,5 +157,39 @@ nmap le $
 map <C-n> :NERDTree<CR>
 nmap fl :NERDTree<CR>
 nmap <silent> <C-f> <leader>vv<CR>
-nmap <silent> <C-r> <leader>vr
+nmap <silent> <S-r> <leader>vr
+"Ctrl+C复制到剪切板
+vmap <C-c> "+y 
 
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
+
+
+"------------Start Python PEP 8 stuff----------------
+" Number of spaces that a pre-existing tab is equal to.
+au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=4
+"spaces for indents
+au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
+au BufRead,BufNewFile *.py,*.pyw set expandtab
+au BufRead,BufNewFile *.py set softtabstop=4
+hi BadWhitespace guifg=gray guibg=red ctermfg=gray ctermbg=red
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+let g:ycm_min_num_of_chars_for_completion = 2  "开始补全的字符数"
+let g:ycm_python_binary_path = '/home/lmn/anaconda3/envs/tensorflow/bin/python'  "jedi模块所在python解释器路径"
+let g:ycm_seed_identifiers_with_syntax = 1  "开启使用语言的一些关键字查询"
+let g:ycm_autoclose_preview_window_after_completion=1 "补全后自动关闭预览窗口"
+
+"状态栏
+set nocompatible   " Disable vi-compatibility
+set laststatus=2   " Always show the statusline
+set encoding=utf-8 " Necessary to show Unicode glyphs"
+"set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
+"let g:Powerline_symbols = 'fancy'
+
+"Python Tab补全
+filetype plugin on
+let g:pydiction_location = '~/.vim/tools/pydiction/complete-dict'
+let g:pydiction_menu_height = 3
+
+set tags+=/home/lmn/opencv-3.4.1/tags,
